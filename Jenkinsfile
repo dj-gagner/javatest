@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         ECR_REPO = '007156912793.dkr.ecr.us-east-1.amazonaws.com/kubernetes-lab'
-        ECR_NAME = 'kubernetes-lab'
         AWS_REGION = 'us-east-1'
         AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
@@ -15,7 +14,7 @@ pipeline {
                 // add the 
                 sh 'aws --version'
                 sh 'docker --version'
-                sh 'docker build . -t ${ECR_NAME}:${GIT_COMMIT}'
+                sh 'docker build . -t ${ECR_REPO}:${GIT_COMMIT}'
                 // copy aws credentials
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REPO}'
                 sh 'docker push ${ECR_REPO}:${GIT_COMMIT}'
