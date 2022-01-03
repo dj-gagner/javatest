@@ -14,8 +14,7 @@ spec:
   - name: test
     image: djgagner/git-pipeline-best-practices
     command:
-    - cat
-    tty: true
+    - ls
     env:
     - name: CONTAINER_ENV_VAR
       value: maven
