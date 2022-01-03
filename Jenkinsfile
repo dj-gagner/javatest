@@ -7,10 +7,6 @@ metadata:
     class: KubernetesDeclarativeAgentTest
 spec:
   containers:
-  - name: jnlp
-    env:
-    - name: CONTAINER_ENV_VAR
-      value: jnlp
   - name: hello
     image: busybox
     command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
