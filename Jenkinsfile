@@ -1,12 +1,11 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
     stages {
-        stage('test') {
-            def testImage = docker.build("test-image", "./Dockerfile") 
-
-            testImage.inside {
-                sh 'aws --version'
+        stage('Test') {
+            steps {
+                sh 'node --version'
             }
         }
     }
