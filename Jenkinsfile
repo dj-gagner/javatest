@@ -13,8 +13,7 @@ spec:
       value: jnlp
   - name: test
     image: djgagner/git-pipeline-best-practices
-    command:
-    - ls
+    command: ['sh', '-c', 'aws --version" && sleep 3600']
     env:
     - name: CONTAINER_ENV_VAR
       value: maven
