@@ -5,14 +5,12 @@ pipeline {
         ECR_REPO = '007156912793.dkr.ecr.us-east-1.amazonaws.com/kubernetes-lab'
         ECR_NAME = 'kubernetes-lab'
         AWS_REGION = 'us-east-1'
+        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
 
     stages {
         stage('Push docker repo to AWS') {
-          withCredentials([usernamePassword(credentialsId: 'AWS_CREDS', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) 
-          {
-              
-          }
             steps {
                 // add the 
                 sh 'echo ${AWS_SECRET_ACCESS_KEY:0:2}'
@@ -23,20 +21,20 @@ pipeline {
                 sh 'docker push ${ECR_REPO}:${GIT_COMMIT}'
             }
         }
-        stage('Deploy to k8s') {
-            steps {
+        // stage('Deploy to k8s') {
+        //     steps {
                 
-            }
-        }
-        stage('Deploy frontend') {
-            steps {
+        //     }
+        // }
+        // stage('Deploy frontend') {
+        //     steps {
                 
-            }
-        }
-        stage('Deploy lambda') {
-            steps {
+        //     }
+        // }
+        // stage('Deploy lambda') {
+        //     steps {
                 
-            }
-        }
+        //     }
+        // }
     }
 }
