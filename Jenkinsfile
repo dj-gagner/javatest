@@ -13,7 +13,7 @@ pipeline {
         stage('Push docker repo to AWS') {
             steps {
                 // add the 
-                
+                sh 'aws --version'
                 sh 'docker --version'
                 sh 'docker build . -t ${ECR_NAME}:${GIT_COMMIT}'
                 // copy aws credentials
