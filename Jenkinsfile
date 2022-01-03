@@ -11,12 +11,9 @@ spec:
     env:
     - name: CONTAINER_ENV_VAR
       value: jnlp
-  - name: test
-    image: djgagner/git-pipeline-best-practices
-    command: ['sh', '-c', 'aws --version" && sleep 3600']
-    env:
-    - name: CONTAINER_ENV_VAR
-      value: maven
+  - name: hello
+    image: busybox
+    command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
 '''
     }
   }
@@ -25,8 +22,8 @@ spec:
       steps {
         sh 'set'
         sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
-        container('test') {
-          sh 'aws --version'
+        container('hello') {
+          sh 'echo "hi"'
         }
       }
     }
