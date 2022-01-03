@@ -3,12 +3,9 @@ pipeline {
 
     stages {
         stage('test') {
-            agent { 
-                dockerfile {
-                    filename 'jenkinsBuildEnvironment/Dockerfile'
-                }
-            }
-            steps {
+            def testImage = docker.build("test-image", "./Dockerfile") 
+
+            testImage.inside {
                 sh 'aws --version'
             }
         }
