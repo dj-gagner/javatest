@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         dockerfile {
-            filename 'jenkinsBuildEnvironment/Dockerfile'
+            filename './jenkinsBuildEnvironment/Dockerfile'
         }
     }
 
