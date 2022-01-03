@@ -8,6 +8,6 @@ spec:
     spec:
       containers:
       - name: hello
-        image: busybox
-        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+        image: djgagner/git-pipeline-best-practices
+        command: ['sh', '-c', 'aws --version']
       restartPolicy: OnFailure
