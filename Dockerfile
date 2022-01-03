@@ -1,6 +1,5 @@
-FROM openjdk:11
-COPY ./example /usr/src/myapp
-WORKDIR /usr/src/myapp
-EXPOSE 6789
-RUN javac src/WebServer.java
-CMD ["java", "src/WebServer"]
+FROM alpine:3.15.0
+RUN apk add curl unzip
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
