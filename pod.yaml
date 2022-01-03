@@ -9,5 +9,5 @@ spec:
       containers:
       - name: hello
         image: djgagner/git-pipeline-best-practices
-        command: ['sh', '-c', 'aws --version']
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!"']
       restartPolicy: OnFailure
