@@ -7,19 +7,25 @@ metadata:
     class: KubernetesDeclarativeAgentTest
 spec:
   containers:
-  - name: hello
-    image: busybox
-    command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+  - name: maven
+    image: maven:3.3.9-jdk-8-alpine
+    command:
+    - cat
+    tty: true
+    env:
+    - name: CONTAINER_ENV_VAR
+      value: maven
 '''
     }
   }
   stages {
-    stage('Run test aws cli') {
+    stage('Run maven') {
       steps {
         sh 'set'
         sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
-        container('hello') {
-          sh 'echo "hi"'
+        container('maven') {
+          sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
+          sh 'mvn -version'
         }
       }
     }
