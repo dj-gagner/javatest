@@ -25,7 +25,7 @@ pipeline {
                 // add the 
                 sh 'eksctl utils write-kubeconfig --cluster=kubernetes-lab'
                 // sh 'envsubst < pod.yaml > templated-pod.yaml'
-                sh 'kubectl apply -f templated-pod.yaml'
+                sh 'kubectl apply -f pod.yaml'
             }
         }
         // stage('Deploy frontend') {
