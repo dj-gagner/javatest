@@ -15,7 +15,7 @@ spec:
         use-fargate: "yes"
     spec:
       containers:
-      - image: 007156912793.dkr.ecr.us-east-1.amazonaws.com/kubernetes-lab
+      - image: 007156912793.dkr.ecr.us-east-1.amazonaws.com/kubernetes-lab:${GIT_COMMIT}
         imagePullPolicy: Always
         name: java
         ports:
