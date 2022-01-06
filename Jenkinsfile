@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy to k8s') {
             steps {
                 // add the 
-                sh 'eksctl utils write-kubeconfig --cluster=vmd-lab'
+                sh 'eksctl utils write-kubeconfig --cluster=kubernetes-lab'
                 sh 'kubectl apply -f pod.yaml'
             }
         }
