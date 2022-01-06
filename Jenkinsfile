@@ -20,11 +20,13 @@ pipeline {
                 sh 'docker push ${ECR_REPO}:${GIT_COMMIT}'
             }
         }
-        // stage('Deploy to k8s') {
-        //     steps {
-                
-        //     }
-        // }
+        stage('Deploy to k8s') {
+            steps {
+                // add the 
+                sh 'eksctl utils write-kubeconfig --cluster=vmd-lab'
+                sh 'kubectl apply -f pod.yaml'
+            }
+        }
         // stage('Deploy frontend') {
         //     steps {
                 
