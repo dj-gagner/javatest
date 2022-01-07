@@ -17,8 +17,8 @@ pipeline {
         stage ('Run postgres script') {
             steps {
               // replace this with something better
-              sh 'psql -f sql/10-odos_init.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -W ${POSTGRES_PASSWORD} -d ${POSTGRES_DATABASE}'
-              sh 'psql -f sql/20-odos_seed.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -W ${POSTGRES_PASSWORD} -d ${POSTGRES_DATABASE}'
+              sh 'psql -f sql/10-odos_init.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -w ${POSTGRES_PASSWORD} -d ${POSTGRES_DATABASE}'
+              sh 'psql -f sql/20-odos_seed.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -w ${POSTGRES_PASSWORD} -d ${POSTGRES_DATABASE}'
             }
         }
         stage('Push docker repo to AWS') {
