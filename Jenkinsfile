@@ -9,7 +9,7 @@ pipeline {
         POSTGRES_HOST = credentials('postgres-host')
         POSTGRES_DATABASE = credentials('postgres-database')
         POSTGRES_USERNAME = credentials('postgres-username')
-        POSTGRES_PASSWORD = credentials('postgres-password')
+        PGPASSWORD = credentials('postgres-password')
         POSTGRES_PORT = credentials('postgres-port')
     }
 
@@ -17,8 +17,8 @@ pipeline {
         stage ('Run postgres script') {
             steps {
               // replace this with something better
-              sh 'psql -f sql/10-odos_init.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -w ${POSTGRES_PASSWORD} -d ${POSTGRES_DATABASE}'
-              sh 'psql -f sql/20-odos_seed.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -w ${POSTGRES_PASSWORD} -d ${POSTGRES_DATABASE}'
+              sh 'psql -f sql/10-odos_init.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -d ${POSTGRES_DATABASE}'
+              sh 'psql -f sql/20-odos_seed.sql -h ${POSTGRES_HOST} -U ${POSTGRES_USERNAME} -d ${POSTGRES_DATABASE}'
             }
         }
         stage('Push docker repo to AWS') {
