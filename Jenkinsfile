@@ -39,15 +39,5 @@ pipeline {
                 sh 'kubectl apply -f templated-pod.yaml'
             }
         }
-        // stage('Deploy frontend') {
-        //     steps {
-                
-        //     }
-        // }
-        // stage('Deploy lambda') {
-        //     steps {
-                
-        //     }
-        // }
     }
 }
